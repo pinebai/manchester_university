@@ -1,0 +1,57 @@
+!
+!-ANALYTICAL INTERGRAL OF f(x)*x**n.dx
+!
+  function xn(x)
+  common/moments/q0(1,1,1),q1(1,1,1),q2(1,1,1),q3(1,1,1)&
+    ,q4(1,1,1),q5(1,1,1),q6(1,1,1),q7(1,1,1)&
+    ,iqmax,power
+  common/lcoef/b0,b1,b2,b3,b4,b5,b6,b7
+!
+  n=iqmax
+!
+  if(n.ge.1)then
+    a=1.;coeff=b0
+    g1=gammq(1.+power,x)
+    term=-a*g1
+    term1=term*coeff
+  endif
+!
+  if(n.ge.2)then
+    a=1.;b=-1.;coeff=b1
+    g2=gammq(2.+power,x)
+    term=-a*g1-b*g2
+    term2=term*coeff
+  endif
+!
+  if(n.ge.3)then
+    a=2.;b=-4.;c=1.;coeff=b2/2.
+    g3=gammq(3.+power,x)
+    term=-a*g1-b*g2-c*g3
+    term3=term*coeff
+  endif
+!
+  if(n.ge.4)then
+    a=6.;b=-18.;c=9.;d=-1.;coeff=b3/6.
+    g4=gammq(4.+power,x)
+    term=-a*g1-b*g2-c*g3-d*g4
+    term4=term*coeff
+  endif
+!
+  if(n.ge.5)then
+    a=24.;b=-96.;c=72.;d=-16.;e=1.;coeff=b4/24.
+    g5=gammq(5.+power,x)
+    term=-a*g1-b*g2-c*g3-d*g4-e*g5
+    term5=term*coeff
+  endif
+!
+  if(n.ge.6)then
+    a=120.;b=-600.;c=600.;d=-200.;e=25.;f=-1.;coeff=b5/120.
+    g6=gammq(6.+power,x)
+    term=-a*g1-b*g2-c*g3-d*g4-e*g5-f*g6
+    term6=term*coeff
+  endif
+!
+  xn=exp(-x)*(term1+term2+term3+term4+term5+term6)
+!
+  return
+  end

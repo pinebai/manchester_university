@@ -1,0 +1,70 @@
+!
+!-ANALYTICAL INTERGRAL OF n(x)*x**(-1).dx
+!
+  function xm1(x)
+!
+  expi=log(x)
+!
+  if(n.ge.1)then
+    a=1.;coeff=b0
+    coeff0=0.
+    term=coeff0*x**0
+    term=exp(-x)*term
+    term1=(term+a*expi)*coeff
+  endif
+!
+  if(n.ge.2)then
+    a=1.;b=-1.;coeff=b1
+    coeff0=(-b)
+    term=coeff0*x**0
+    term=exp(-x)*term
+    term2=(term+a*expi)*coeff
+  endif
+!
+  if(n.ge.3)then
+    a=2.;b=-4.;c=1.;coeff=b2/2.
+    coeff0=(-b-c)
+    coeff1=(-c)
+    term=coeff0*x**0+coeff1*x**1
+    term=exp(-x)*term
+    term3=(term+a*expi)*coeff
+  endif
+!
+  if(n.ge.4)then
+    a=6.;b=-18.;c=9.;d=-1.;coeff=b3/6.
+    coeff0=(-b-c-2*d)
+    coeff1=(-c-2*d)
+    coeff2=(-d)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2
+    term=exp(-x)*term
+    term4=(term+a*expi)*coeff
+  endif
+!
+  if(n.ge.5)then
+    a=24.;b=-96.;c=72.;d=-16.;e=1.;coeff=b4/24.
+    coeff0=(-b-c-2*d-6*e)
+    coeff1=(-c-2*d-6*e)
+    coeff2=(-d-3*e)
+    coeff3=(-e)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3
+    term=exp(-x)*term
+    term5=(term+a*expi)*coeff
+  endif
+!
+  if(n.ge.6)then
+    a=120.;b=-600.;c=600.;d=-200.;e=25.;f=-1.;coeff=b5/120.
+    coeff0=(-b-c-2*d-6*e-24*f)
+    coeff1=(-c-2*d-6*e-24*f)
+    coeff2=(-d-3*e-12*f)
+    coeff3=(-e-4*f)
+    coeff4=(-f)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4
+    term=exp(-x)*term
+    term6=(term+a*expi)*coeff
+  endif
+!
+  xm1=(term1+term2+term3+term4+term5+term6)
+!
+  return
+  end

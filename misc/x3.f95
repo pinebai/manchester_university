@@ -1,0 +1,96 @@
+!
+!-ANALYTICAL INTERGRAL OF n(x)*x**3.dx
+!
+  function x3(x)
+  common/moments/q0(1,1,1),q1(1,1,1),q2(1,1,1),q3(1,1,1)&
+    ,q4(1,1,1),q5(1,1,1),q6(1,1,1),q7(1,1,1)&
+    ,iqmax,rexpm
+  common/lcoef/b0,b1,b2,b3,b4,b5,b6,b7
+!
+  n=iqmax
+!
+  if(n.ge.1)then
+    a=1.;coeff=b0
+    coeff0=(-6*a)
+    coeff1=(-6*a)
+    coeff2=(-3*a)
+    coeff3=(-a)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3
+    term1=coeff*term
+  endif
+!
+  if(n.ge.2)then
+    a=1.;b=-1.;coeff=b1
+    coeff0=(-6*a-24*b)
+    coeff1=(-6*a-24*b)
+    coeff2=(-3*a-12*b)
+    coeff3=(-a-4*b)
+    coeff4=(-b)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4
+    term2=coeff*term
+  endif
+!
+  if(n.ge.3)then
+    a=2.;b=-4.;c=1.;coeff=b2/2.
+    coeff0=(-6*a-24*b-120*c)
+    coeff1=(-6*a-24*b-120*c)
+    coeff2=(-3*a-12*b-60*c)
+    coeff3=(-a-4*b-20*c)
+    coeff4=(-b-5*c)
+    coeff5=(-c)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4+coeff5*x**5
+    term3=coeff*term
+  endif
+!
+  if(n.ge.4)then
+    a=6.;b=-18.;c=9.;d=-1.;coeff=b3/6.
+    coeff0=(-6*a-24*b-120*c-720*d)
+    coeff1=(-6*a-24*b-120*c-720*d)
+    coeff2=(-3*a-12*b-60*c-360*d)
+    coeff3=(-a-4*b-20*c-120*d)
+    coeff4=(-b-5*c-30*d)
+    coeff5=(-c-6*d)
+    coeff6=(-d)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4+coeff5*x**5+coeff6*x**6
+    term4=coeff*term
+  endif
+!
+  if(n.ge.5)then
+    a=24.;b=-96.;c=72.;d=-16.;e=1.;coeff=b4/24.
+    coeff0=(-6*a-24*b-120*c-720*d-5040*e)
+    coeff1=(-6*a-24*b-120*c-720*d-5040*e)
+    coeff2=(-3*a-12*b-60*c-360*d-2520*e)
+    coeff3=(-a-4*b-20*c-120*d-840*e)
+    coeff4=(-b-5*c-30*d-210*e)
+    coeff5=(-c-6*d-42*e)
+    coeff6=(-d-7*e)
+    coeff7=(-e)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4+coeff5*x**5+coeff6*x**6+coeff7*x**7
+    term5=coeff*term
+  endif
+!
+  if(n.ge.6)then
+    a=120.;b=-600.;c=600.;d=-200.;e=25.;f=-1.;coeff=b5/120.
+    coeff0=(-6*a-24*b-120*c-720*d-5040*e-40320*f)
+    coeff1=(-6*a-24*b-120*c-720*d-5040*e-40320*f)
+    coeff2=(-3*a-12*b-60*c-360*d-2520*e-20160*f)
+    coeff3=(-a-4*b-20*c-120*d-840*e-6720*f)
+    coeff4=(-b-5*c-30*d-210*e-1680*f)
+    coeff5=(-c-6*d-42*e-336*f)
+    coeff6=(-d-7*e-56*f)
+    coeff7=(-e-8*f)
+    coeff8=(-f)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4+coeff5*x**5+coeff6*x**6+coeff7*x**7 &
+      +coeff8*x**8
+    term6=coeff*term
+  endif
+!
+  x3=exp(-x)*(term1+term2+term3+term4+term5+term6)
+!
+  return
+  end

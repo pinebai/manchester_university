@@ -1,0 +1,44 @@
+  function xm2(x)
+!
+  expi=log(x)
+!
+  if(n.ge.1)then
+    a=1.;coeff=b0
+    term=a*(-exp(-x)/x-expi)
+    term1=term*coeff
+  endif
+!
+  if(n.ge.2)then
+    a=1.;b=-1.;coeff=b1
+    term=-a*exp(-x)/x+(-a+b)*expi
+    term2=term*coeff
+  endif
+!
+  if(n.ge.3)then
+    a=2.;b=-4.;c=1.;coeff=b2/2.
+    term=-exp(-x)*(a+c*x)/x+(-a+b)*expi
+    term3=term*coeff
+  endif
+!
+  if(n.ge.4)then
+    a=6.;b=-18.;c=9.;d=-1.;coeff=b3/6.
+    term=exp(-x)*(-c-d-a/x-d*x)-a*expi+b*expi
+    term4=term*coeff
+  endif
+!
+  if(n.ge.5)then
+    a=24.;b=-96.;c=72.;d=-16.;e=1.;coeff=b4/24.
+    term=exp(-x)*(-a-x*(c+d*(1+x)+e*(2+2*x+x**2))-(a-b)*exp(-x)*x*expi)/x
+    term5=term*coeff
+  endif
+!
+  if(n.ge.6)then
+    a=120.;b=-600.;c=600.;d=-200.;e=25.;f=-1.;coeff=b5/120.
+    term=exp(-x)*(-c-d-2*e-6*f-a/x+(-d-2*e-6*f)*x+(-e-3*f)*x**2-f*x**3)-a*expi+b*expi
+    term6=term*coeff
+  endif
+!
+  xm2=(term1+term2+term3+term4+term5+term6)
+!
+  return
+  end

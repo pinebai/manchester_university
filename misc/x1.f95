@@ -1,0 +1,81 @@
+!
+!-ANALYTICAL INTERGRAL OF n(x)*x**1.dx
+!
+  function x1(x)
+  common/moments/q0(1,1,1),q1(1,1,1),q2(1,1,1),q3(1,1,1)&
+    ,q4(1,1,1),q5(1,1,1),q6(1,1,1),q7(1,1,1)&
+    ,iqmax,rexpm
+  common/lcoef/b0,b1,b2,b3,b4,b5,b6,b7
+!
+  n=iqmax
+!
+  if(n.ge.1)then
+    a=1.;coeff=b0
+    coeff0=(-a)
+    coeff1=(-a)
+    term=coeff0*x**0+coeff1*x**1
+    term1=coeff*term
+  endif
+!
+  if(n.ge.2)then
+    a=1.;b=-1.;coeff=b1
+    coeff0=(-a-2*b)
+    coeff1=(-a-2*b)
+    coeff2=(-b)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2
+    term2=coeff*term
+  endif
+!
+  if(n.ge.3)then
+    a=2.;b=-4.;c=1.;coeff=b2/2.
+    coeff0=(-a-2*b-6*c)
+    coeff1=(-a-2*b-6*c)
+    coeff2=(-b-3*c)
+    coeff3=(-c)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3
+    term3=coeff*term
+  endif
+!
+  if(n.ge.4)then
+    a=6.;b=-18.;c=9.;d=-1.;coeff=b3/6.
+    coeff0=(-a-2*b-6*c-24*d)
+    coeff1=(-a-2*b-6*c-24*d)
+    coeff2=(-b-3*c-12*d)
+    coeff3=(-c-4*d)
+    coeff4=(-d)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4
+    term4=coeff*term
+  endif
+!
+  if(n.ge.5)then
+    a=24.;b=-96.;c=72.;d=-16.;e=1.;coeff=b4/24.
+    coeff0=(-a-2*b-6*c-24*d-120*e)
+    coeff1=(-a-2*b-6*c-24*d-120*e)
+    coeff2=(-b-3*c-12*d-60*e)
+    coeff3=(-c-4*d-20*e)
+    coeff4=(-d-5*e)
+    coeff5=(-e)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4+coeff5*x**5
+    term5=coeff*term
+  endif
+!
+  if(n.ge.6)then
+    a=120.;b=-600.;c=600.;d=-200.;e=25.;f=-1.;coeff=b5/120.
+    coeff0=(-a-2*b-6*c-24*d-120*e-720*f)
+    coeff1=(-a-2*b-6*c-24*d-120*e-720*f)
+    coeff2=(-b-3*c-12*d-60*e-360*f)
+    coeff3=(-c-4*d-20*e-120*f)
+    coeff4=(-d-5*e-30*f)
+    coeff5=(-e-6*f)
+    coeff6=(-f)
+    term=coeff0*x**0+coeff1*x**1+coeff2*x**2+coeff3*x**3 &
+      +coeff4*x**4+coeff5*x**5+coeff6*x**6
+    term6=coeff*term
+  endif
+!
+  x1=exp(-x)*(term1+term2+term3+term4+term5+term6)
+!
+  return
+  end
